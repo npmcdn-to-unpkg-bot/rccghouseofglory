@@ -1,0 +1,41 @@
+{% extends "layouts/base.twig" %}
+
+{% block content %}
+	<div class="article-wrapper">
+		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+			<section class="article-content">
+				<!-- <h1 class="article-title">{{post.title}}</h1> -->
+				<div class="tease-meta">
+					<div class="inline-block tease-author">
+						<i class="fa fa-user"></i> By <b>{{post.author}}</b>
+					</div>
+					<div class="inline-block tease-cat categories-links">
+						<i class="fa fa-folder"></i> In
+						    <ul class="tag-list list-reset">
+						    {% for term in post.terms() %}
+						        <li><a href="{{term.link}}">{{term.name}}</a></li>
+						    {% endfor %}
+						    </ul>
+
+					</div>
+				</div>
+				<div class="article-body">
+					{{post.content}}
+				</div>
+			</section>
+		{% if post.comment_status != 'closed' %}
+			<section class="comments">
+				<div class="respond">
+					<h3 class="h2">Comments</h3>
+					{{ fn('comment_form') }}
+				</div>
+				<div class="responses">
+					{% for cmt in post.get_comments() %}
+						{% include "partials/comment.twig" with {comment:cmt} %}
+					{% endfor %}
+				</div>
+			</section>
+		{% endif %}
+		</article>
+	</div><!-- /content-wrapper -->
+{% endblock %}

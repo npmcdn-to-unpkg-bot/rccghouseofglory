@@ -1,0 +1,332 @@
+@import "libs/_normalize.styl";
+@import "_util.styl";
+@import "_tease.styl";
+@import "_colors.styl";
+
+body{
+	min-height:100vh;
+	background:whitesmoke;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+	    background: url("https://raw.github.com/subtlepatterns/SubtlePatterns/master/bgnoise_lg.png");
+		//background-image: url("http://questerconsults.com/images/bg.jpg");
+		    //background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+	    background-repeat: repeat;
+	& *{
+		font-family: 'Roboto', sans-serif;
+	}
+
+	// padding: 0px 5vw;
+}
+
+.btn.current{
+	background: $blue;
+}
+
+.next,.prev{
+	background: $blue;
+}
+.info-bar{
+	padding: 15px;
+	background:darken($blue,20%)
+	color: whitesmoke;
+	font-size:1.02rem;
+}
+
+.main-container{
+	min-height:100vh;
+	width:100%;
+}
+
+.widget{
+	color:#eee;
+	& > ul{
+		list-style: none;
+		padding: 0px;
+		margin: 0px;
+		& li{
+			margin-bottom:4px;
+		}
+	}
+}
+
+.main-header, .main-content-wrapper, .main-footer {
+  flex: 1 100%;
+}
+
+.main-header{
+	width:100%;
+	align-self: center;
+	box-shadow: 0px 5px 5px rgba(59, 43, 43, 0.4);
+	z-index: 3;
+	position: relative;
+}
+
+
+.logo{
+	background:rgba($blue,.7);
+	padding:10px;
+}
+
+.stuck {
+  position:fixed;
+  width: 100vw;
+  top:0;
+  left: 0;
+  box-shadow: 0px 5px 5px rgba(59, 43, 43, 0.4);
+}
+
+.main-nav{
+	display:flex;
+	flex-flow: row wrap;
+	margin:0 auto;
+	justify-content: flex-start;
+	background:$blue;
+
+	& > h1{
+		display:inline-block;
+		margin:0px;
+		font-size:1.5rem;
+		perspective:500px;
+		max-width:100%;
+		flex:1 1 auto;
+		padding:1px;
+		position: relative;
+		// border-left: 2px solid #32536c;
+		// &:last-child{
+		// 	border-right: 2px solid #32536c;
+		// }
+	}
+	& a{
+		display:block;
+		color:#eee;
+		padding:10px 10px;
+		text-decoration:none;
+		transition:all 500ms ease;
+		max-width:100%;
+		font-family: 'Raleway', sans-serif;
+		font-weight:100;
+		text-align: center;
+		text-transform: uppercase;
+		&:hover{
+			background:lighten($blue,20%)//#555;
+			color: whitesmoke;
+		}
+
+	}
+}
+img{
+	max-width: 100%;
+}
+.menu-item-has-children{
+	z-index: 999;
+	&:hover > .child-nav{
+		visibility: visible;
+	    opacity: 1;
+	    z-index: 999;
+		transform: translate(0,0);
+	}
+}
+
+.search-field{
+	max-width: 100%;
+}
+.child-nav{
+	position:absolute;
+	top:100%;/* Uncommenting this makes the dropdowns work in IE7 but looks a little worse in all other browsers. Your call. */
+	position: absolute;
+    width: 270px;
+    left: 0;
+    top: 100%;
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+	background: #fff;
+	transform: translate(0,20px);
+	transition: all .5s cubic-bezier(.215,.61,.355,1);
+	border-top: #32536c 3px solid;
+	box-shadow: 0px 5px 5px rgba(59, 43, 43, 0.4);
+	& h1{
+		display: block;
+		font-size: 14px;
+		margin: 0px;
+		text-align:left;z-index: 9999;
+		position: relative;
+		& a{
+			color:$blue;
+			text-align: left;z-index: 9999;
+			font-weight: 700;
+			position: relative;
+		}
+	}
+}
+
+.content-header{
+	width:100%;
+	text-align:center;
+	padding:  4rem 4rem;
+
+}
+
+.article-body{
+	font-size: 1.1rem;
+
+	& li{
+		margin-bottom: 1rem;
+	}
+	& a{
+		color:#666;
+		border-bottom: 2px solid #32536c
+		padding: 2px;
+		background: rgba(0, 0, 0, 0.1);
+		&:hover{
+			text-decoration: none;
+		}
+	}
+}
+.page-title{
+	// background: rgba(#fff,.9);
+	font-size:3.2rem;
+	font-family: 'Raleway', sans-serif;
+	color: $blue
+
+	text-transform:uppercase;
+	text-shadow: -1px 4px 5px rgba(51,51,51,.34);
+}
+
+.main-content-wrapper{
+	padding: 0px ;
+
+	//margin-top:40px;
+}
+.content-wrapper{
+	width:100%;
+	min-height:61vh;
+	lost-utility: clearfix;
+	display:flex;
+	flex-flow: row wrap;
+	//box-shadow: 0 0 38px rgba(0,0,0,.5);
+	&.page{
+		padding: 0px 4rem;
+	}
+
+	margin-bottom: 2rem;
+	& > *{
+		float:left;
+		flex:1 0 100%;
+	}
+	& label{
+		color:#333;
+	}
+	// & h1,h2,h3,h4{
+	// 	color:whitesmoke;
+	// }
+
+}
+
+.main-content{
+	width:80%;
+	//background:darken($blue,20%);//#444;
+	background-color: rgba(255, 255, 255, .99);
+	flex:1 1 80%;
+	padding: 1rem;
+	color:#111;
+	& > h1{
+		text-transform:capitalize;
+	}
+	& h1,h2,h3,h4{
+		font-family: 'Raleway';
+		font-weight: 100;
+		border-bottom: 2px solid $blue;
+		color: $blue;
+		display: inline-block;
+	}
+}
+.main-sidebar{
+	padding: 1rem;
+	width:20%;
+	flex:1 1 20%;
+	background:rgba($blue,.7);
+	color: #111;
+	& a{
+		color:whitesmoke;
+		border-bottom: 2px solid #32536c;
+		&:hover{
+			text-decoration: none;
+		}
+	}
+}
+
+.form-group{
+	padding:5px;
+	& > *{
+		display:block;
+	}
+	& > label{
+		font-size: 1.1rem;
+		margin-bottom:5px;
+		text-transform:capitalize;
+	}
+	input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week] {
+		width:20rem;
+	}
+	& input,select{
+		border:0px;
+		max-width:100%;
+	}
+	& input[type="submit"]{
+
+		padding:10px;
+	}
+}
+
+.main-footer{
+	width:100%;
+	background:$blue;//#444;
+	//min-height:100px;
+	//margin-top:50px;
+}
+
+.copyright{
+	padding:25px 0px;
+	background: $blue;
+}
+
+@media all and (max-width:60.4444444em) {
+	.main-content-wrapper{
+		padding: 0px;
+	}
+}
+
+@media all and (max-width:56.0833333em) {
+	.page-title{
+		font-size:2rem;
+	}
+	.main-nav{
+
+		& > h1{
+			font-size: 1em;
+		}
+	}
+	.content-wrapper{
+
+		&.page{
+			padding: 0px 1rem;
+		}
+	}
+}
+
+
+
+@media all and (max-width:30.8125em) {
+	.main-nav{
+		display: block;
+		& > h1{
+			width: 100%;
+		}
+	}
+}

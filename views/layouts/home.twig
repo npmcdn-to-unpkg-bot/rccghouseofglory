@@ -1,0 +1,62 @@
+{% block html_head_container %}
+
+	{% include 'partials/html-header.twig' %}
+
+{% endblock %}
+
+	<body class="{{body_class}}" data-template="base.twig">
+		<div class="info-bar">
+	        Prayer Line: 1-844-PRAYER4 (772-9374)     Next Service: Sunday 9:00am
+	    </div>
+		<main class="main-container">
+			<header class="main-header" >
+				{% block header %}
+
+						<h1 class="logo m0" role="banner">
+							<img src="{{theme.link}}/public/images/logo.png" width="100px" height="auto">
+							<!-- <a class="logo-link" href="{{site.url}}" rel="home">{{site.name}}</a> -->
+						</h1>
+						<nav id="main-nav" class="main-nav" role="navigation">
+							{% include "partials/menu.twig" with {'menu': menu.get_items} %}
+						</nav><!-- #nav -->
+
+				{% endblock %}
+			</header>
+
+			<section role="main" class="main-content-wrapper">
+				<div id="main-slider">
+					{% filter shortcodes %}
+						[wds id="1"]
+					{%endfilter%}
+				</div>
+
+				<section class="content-wrapper">
+					<article class="main-content {{sidebar_class}}">
+						{% block content %}
+							Sorry, no content
+						{% endblock %}
+					</div>
+
+				</section>
+
+			</section>
+
+			{% block footer %}
+				<footer id="footer" class="main-footer">
+					{% include 'partials/footer.twig' %}
+					<div class="copyright center white bg-darken-2">
+		                © {{"now"|date('Y')}} RCCG House Of Glory, Brooks. All Rights Reserved.
+		            </div>
+				</footer>
+				{{ function('wp_footer') }}
+			{% endblock %}
+		</div>
+		<script src="{{ theme.link }}/public/js/jquery.waypoints.min.js"></script>
+	<script src="{{ theme.link }}/public/js/sticky.min.js"></script>
+	<script type="text/javascript">
+	var sticky = new Waypoint.Sticky({
+	    element: $('.main-nav')[0]
+	})
+	</script>
+	</body>
+</html>

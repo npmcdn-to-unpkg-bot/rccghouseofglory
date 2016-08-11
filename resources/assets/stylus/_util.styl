@@ -1,0 +1,32 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.glass::before {
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/28727/pelican.jpg');
+  /* Prefix free isn't picking up this one */
+  -webkit-filter: url('#blur');
+  filter: url('#blur');
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.glass {
+  background-color: white;
+}
+
+.glass {
+  position: relative;
+}
+
+.glass::before {
+  z-index: -1;
+  display: block;
+  position: absolute;
+  content: ' ';
+}

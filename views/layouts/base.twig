@@ -1,0 +1,108 @@
+{% block html_head_container %}
+
+	{% include 'partials/html-header.twig' %}
+
+{% endblock %}
+
+	<body class="{{body_class}}" data-template="base.twig">
+		<div class="info-bar">
+	        Prayer Line: 1-844-PRAYER4 (772-9374)     Next Service: Sunday 9:00am
+	    </div>
+		<main class="main-container">
+			<header class="main-header" >
+				{% block header %}
+
+						<h1 class="logo m0" role="banner">
+							<img src="{{theme.link}}/public/images/logo.png" width="100px" height="auto">
+							<!-- <a class="logo-link" href="{{site.url}}" rel="home">{{site.name}}</a> -->
+						</h1>
+						<nav id="main-nav" class="main-nav" role="navigation">
+							{% include "partials/menu.twig" with {'menu': menu.get_items} %}
+						</nav><!-- #nav -->
+
+				{% endblock %}
+			</header>
+
+			<section role="main" class="main-content-wrapper">
+				{% if post.title %}
+
+					<header class="content-header">
+						<h1 class="page-title m0">{{post.title}}</h1>
+						<!-- <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
+
+        					{# {{function('bcn_display')}} #}
+						</div> -->
+					</header>
+				{% endif %}
+				{% if title %}
+
+					<header class="content-header">
+						<h1 class="page-title m0">{{title}}</h1>
+						<!-- <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
+	        				{# {{function('bcn_display')}} #}
+						</div> -->
+					</header>
+				{% endif %}
+
+				<section class="content-wrapper page">
+
+					
+					<article class="main-content {{sidebar_class}}">
+						{% block content %}
+							Sorry, no content
+						{% endblock %}
+						{% if pagination %}<div class="tool-pagination">
+
+						    <ul class="pages list-reset inline-block">
+								<li class="inline-block">
+									{% if pagination.prev %}
+							        <a href="{{pagination.prev.link}}" class="prev {{pagination.prev.link|length ? '' : 'invisible'}} btn inline-block">Prev</a>
+							    	{% endif %}
+								</li>
+
+						        {% for page in pagination.pages %}
+						            <li class="inline-block">
+						                {% if page.link %}
+						                    <a href="{{page.link}}" class="{{page.class}} btn">{{page.title}}</a>
+						                {% else %}
+						                    <span class="{{page.class}} btn">{{page.title}}</span>
+						                {% endif %}
+						            </li>
+						        {% endfor %}
+
+								<li class="inline-block">
+									{% if pagination.next %}
+						        <a href="{{pagination.next.link}}" class="next {{pagination.next.link|length ? '' : 'invisible'}} btn">Next</a>
+						    {% endif %}
+								</li>
+						    </ul>
+
+						</div>
+						{%endif%}
+					</article>
+					{% if sidebar %}
+						{{sidebar}}
+					{% endif %}
+				</section>
+
+			</section>
+
+			{% block footer %}
+				<footer id="footer" class="main-footer">
+					{% include 'partials/footer.twig' %}
+					<div class="copyright center white bg-darken-2">
+		                © {{"now"|date('Y')}} RCCG House Of Glory, Brooks. All Rights Reserved.
+		            </div>
+				</footer>
+				{{ function('wp_footer') }}
+			{% endblock %}
+		</div>
+		<script src="{{ theme.link }}/public/js/jquery.waypoints.min.js"></script>
+	<script src="{{ theme.link }}/public/js/sticky.min.js"></script>
+	<script type="text/javascript">
+	var sticky = new Waypoint.Sticky({
+	    element: $('.main-nav')[0]
+	})
+	</script>
+	</body>
+</html>

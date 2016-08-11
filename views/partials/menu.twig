@@ -1,0 +1,14 @@
+{% if menu %}
+
+	{% for item in menu %}
+		<h1 class="{{item.classes | join(' ')}}">
+			<a href="{{item.get_link}}">{{item.title}}</a>
+			{% if item.get_children %}
+				<nav class="child-nav">
+					{% include "partials/menu.twig" with {'menu': item.get_children} %}
+				</nav>
+			{% endif %}
+		</h1>
+	{% endfor %}
+
+{% endif %}
